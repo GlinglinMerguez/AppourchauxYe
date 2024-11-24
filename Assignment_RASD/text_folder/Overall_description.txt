@@ -1,0 +1,107 @@
+2. - Overall description:
+
+2. A. - Product perspective:
+
+2. A. 1. - Scenarios:
+
+Student uploads/creates a CV:
+The student can upload a already existing CV or create one on the platform by filling information about their education, experiences, skills, etc.
+
+Student browses the offers:
+The student can look at the list of offers and filter by location, time, field, level of education, and by using keywords. They can then apply, which sends a notification to the company.
+
+Student gets a suggestion:
+The student periodicaly receives suggestions about how to improve their CV and can follow the suggestion step by step.
+
+Student gets a recommendation:
+The student periodicaly receives internship recommendations that may match their expectations, they can accept it and it will send a notification to the corresponding company.
+
+Company creates an offer:
+The company can create a new offer and specify all the details about the field, time, location, expected degree. This offer is then available for all student to see and advertised to those that may match.
+
+Company gets a suggestion:
+The company periodicaly receives suggestions on how to make the offers / project descriptions more appealing to students.
+
+Company gets a recommendation:
+The company periodicaly receives recommendations about student profiles. They can accept it and engage the recruiting process.
+
+Company starts recruiting process:
+Once the user and the company both agreed to their counterpart's offer, the company can communicate, send testing materials, and interview the student on the platform.
+
+User is unhappy:
+If a student or a company is unhappy about something, they can complain in the dedicated spaces on the platform. A solution can then be found by exchange between the students, the companies and the universities.
+
+University monitors situation of internships:
+The university has access to tools to monitor the status of the internships and to get info. They can interrupt an internship if an issue arrises.
+
+2. A. 2. - Domain class diagram
+
+TODO
+
+2. A. 3. - State diagrams
+
+TODO
+
+
+
+2. B. - Product functions:
+
+Sign-up and login:
+Sign-up is available to all users who want to use the platform. When a new user opens the platform, they can press the "Sign-up" button and will be redirected to a page where they can enter credentials (for example with e-mail or google account) and customise their username, password, and additionnal account settings.
+Once an account is created by a user, it can be accessed by pressing the login button and entering the credentials provided during the account creation.
+
+CV upload / creation:
+The students can upload an already existing CV or create one on the platform by filling in their education, experiences, skills and attitudes.
+
+Internship offer creation:
+The companies can create internship offers by specifying the projects (application domain, tasks to be performed, relevant adopted technologies-if any, etc.), terms (paid or unpaid, tangible and intangible benefits, such as training, mentorships, etc.), profiles prefered for the offer (degree, field, etc.), as well as timing and location.
+
+CV/offer suggestions:
+The students have access to tutorials and hints on CV creation.
+The companies also have access to help for making project descriptions.
+
+Students can be proactive:
+Student can manually go through the available internships to look for offers that may suit them. They can search with key words about location, level of education, field, etc.
+
+Recommendations:
+The platform uses statistical analysis and CV-offer similarity to find probable matches. Those probable matches are then periodicaly proposed to both the students and the companies. The recommendations can be accepted or dismissed by both parties.
+The platforms collects various kinds of information during this process based for example on acceptances and refusals to feed and improve the statistical analysis. Users can also provide feedback which will also be studied by the platform to further improve their recommendation system.
+
+Support for selection process:
+The platform supports the selection by helping manage interviews, questionnaires, tests, etc. The platform also provides the companies with tools to compare how students performed in those tests to finalize the selections.
+
+Monitoring:
+The platform provides spaces for communication, complaints, internship status monitoring, and matchmaking process monitoring to students, universities and companies.
+
+
+
+2. C. - User characteristics:
+
+Student:
+The student is able to register and login to the platform, to upload or create a CV and to browse the interships offers to find one that matches their expectations. Offers can also be recommended to the user.
+Once they are accepted by a company they can participate to the selection process and monitor it on the platform.
+
+Companies:
+The companies can post offers which will be advertized to students. Students will contact them and they will also receive recommendations.
+Should they accept a recommendation, the company can contact them and go through the recruiting process on the platform.
+
+Universities:
+They can and are advised to monitor the recruiting process and the internships themselves. They have tools to communicate and see complaints.
+
+
+
+2. D. - Assumptions, dependencies and constraints:
+
+2. D. 1. - Regulatory policies
+
+User personal information is only used for login. Mail boxes or google accounts wont be used for commercial purposes.
+
+2. D. 2. - Domain Assumptions:
+
+[D1] Users must have a reliable internet connection
+[D2] User personal information must be correct
+[D3] Student CVs must correspond to their skills and experiences
+[D4] Company posts must reflect what they truely offer in their projects
+[D5] Universities must monitor the situation of internships
+[D6] User feedback must be truthful
+
