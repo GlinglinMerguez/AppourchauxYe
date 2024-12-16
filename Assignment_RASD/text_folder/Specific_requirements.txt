@@ -22,3 +22,31 @@ Image to put
     • Provides tools to monitor ongoing internships and address complaints from both students and companies
     • Displays internship statuses, including student progress and company compliance
 Image to put
+
+
+3.1.2 Hardware Interfaces
+Our platform is a web app, as a consequence, it does not require any specific hardware
+ interface except for computer and any other device with web browser.
+
+ 3.1.3 Software Interfaces
+ The system will integrate with:
+ • Email services: For sending notifications, such as interview schedules and application updates
+ • Third-party APIs (University Internal Online Sercive): For university background checks
+ • External database systems : 
+    • Relational database (e.g. cloud-hosted MySQL) to store user information, intership offers and feedback
+    • NoSQL database (e.g. MongoDB Atlas) for storing unstructured data, such as CSV files or applications logs
+
+
+3.1.4 Communication Interfaces
+The system will use the following communication protocols:
+1. HTTPS
+    • For secure communication between the platform and its users
+    • HTTPS ensures data security by encrypting sensitive information, such as login credentials and feedback submissions
+    • This guarantees data privacy and integrity during communication
+2. RESTful APIs
+    • For interaction between frontend (user interface) and backend services (server logic)
+    • Enables strctured data exchange and facilitates integration with third-party services like email systems or university APIs
+    • This ensures scalability and flexibility for future enhancements
+3. WebSocket
+    • For real-time communication between the platform and its users, such as real-time updates on application statuses, interviews schedules, feedback and notifications
+
