@@ -1,0 +1,24 @@
+3.1 External Interface Requirements
+
+3.1.1 User Interfaces
+The platform should provide intuitive and accessible user interfaces tailored to the three main user groups : Students, Companies and Universities
+
+• Student Interface:
+    • Allows students to create accounts, upload CVs, search for offers by keywords and browse internship offers
+    • Displays personalized suggestions to improve CVs and provides recommandations for matching internships
+    • Offers a dashboard to track applications, manage interviews and communicate with Companies
+    • Includes a complaints section for reporting issues
+
+Image to put
+
+•  Company Interface:
+    • Enables companies to create  and publish detailed internship offers
+    • Offers tools for creating assessment tests and managing candidate evaluations, interviews and recruitement processes
+    • Displays suggestions to improve internship descriptions and recommendations for suitable candidates
+    • Includes a complaints section for reporting issues
+Image to put
+
+•  University Interface:
+    • Provides tools to monitor ongoing internships and address complaints from both students and companies
+    • Displays internship statuses, including student progress and company compliance
+Image to put
