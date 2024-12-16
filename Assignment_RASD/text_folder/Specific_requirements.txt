@@ -28,7 +28,7 @@ Image to put
 Our platform is a web app, as a consequence, it does not require any specific hardware
  interface except for computer and any other device with web browser.
 
- 3.1.3 Software Interfaces
+3.1.3 Software Interfaces
  The system will integrate with:
  • Email services: For sending notifications, such as interview schedules and application updates
  • Third-party APIs (University Internal Online Sercive): For university background checks
@@ -50,3 +50,47 @@ The system will use the following communication protocols:
 3. WebSocket
     • For real-time communication between the platform and its users, such as real-time updates on application statuses, interviews schedules, feedback and notifications
 
+3.2 Functional Requirements
+
+Sign up and log in 
+[R1] The system allows users (students, companies and universities) to register by providing their personal information (full name, organization etc), a valid email address and a password
+[R2] The system allows registered users to log in and access the platform's features based on their roles
+
+Internship Offers Management
+[R3] The system allows companies to create, modify and delete internship offers
+[R4] The system allows companies to manage the status of internship offers (e.g., open, closed, completed)
+[R5] The system allows students to browse and filter internship offers based on criteria like location, field, required skills and degree level
+[R6] The system notifies students abut new internship offers matching their profile and preference
+
+CV and Application Management
+[R7] The system allows students to upload CV on the platform
+[R8] The system allows students to update their CVs and keep their profiles up to date
+[R9] The system allows students to apply to internship offers directly from the platform by attaching their CVs and adding optional documents (e.g. cover letters)
+[R10] The system allows companies to view, evalute and shortlist applications received for their internship offers
+
+Recruitement Process Management
+[R11] The system allows companies to initiate recruitment process that may include tests, interviews or both
+[R12] The system allows companies to manage recruitment stages, including scheduling interviews, assigning tests and evaluating results
+[R13] The system provides tools for companies to evaluate, score and rank candidates based on test results, interview feedback and overall suitability
+[R14] The system notifies students of updates related to their recruitment status (e.g., rejected, hired, shortlisted)
+
+Feedback and Suggestions 
+[R15] The system allows students to provide feedback on their application and recruitment experiences
+[R16] The system allows companies to provide feedback on candidates they evaluated and recruitment experiences
+[R17] The system collects feedback from students and companies, analyzes it and generates actionable suggestions for both parties
+[R18] The system sends personalized suggestions to students to improve their CVs, profiles, cover letters or applications
+[R19] The system sends personalized suggestions to companies to improve their internship offers or recruitment strategies
+
+Matching and Recommendations
+[R20] The system uses a matching algorithm to analyze student CVs, internship offers and user preferences to generate recommendations
+[R21] The system sends internship recommendations to students based on their skills, preferences and qualifications
+[R22] The system sends candidate recommendations to companies based on the requirements of their internship offers
+
+Complaints and Monitoring
+[R23] The system allows students and companies to submit complaints about any issues related to the internship or recruitment process
+[R24] The system allows universities to monitor and resolve complaints submitted by students or companies
+[R25] The system notifies universities of unresolved issues or complaints requiring attention
+
+Notifications and Real-time Updates
+[R26] The system notifies students of application deadlines, interview schedules, test results and application status updates in real time
+[R27] The system notifies companies of updates on candidate applications and recruitment stages
