@@ -94,3 +94,135 @@ Complaints and Monitoring
 Notifications and Real-time Updates
 [R26] The system notifies students of application deadlines, interview schedules, test results and application status updates in real time
 [R27] The system notifies companies of updates on candidate applications and recruitment stages
+
+3.2.1
+TO DO : Use cases diagram
+
+3.2.2 Use Cases
+[UC1] User registration 
+• Name: User Registration
+• Actors: Student, Company, University
+• Entry Condition: The user has accessed the registration page of the platform
+• Event Flow:
+- The user clicks the “Register” button
+- The system displays a registration form
+- The user fills in the required fields (e.g., full name, email, password)
+- The user submits the form
+- The system validates the data and creates an account
+- The system displays the login view
+• Exit Condition: The user account is successfully registered
+• Exception: If the email already exists, the system notifies the user and suggests logging in instead
+
+[UC2] User Login
+• Name: User login
+• Actors: Student, Company, University
+• Entry Condition: The user has accessed the registration page of the platform
+• Event Flow:
+- The user enters their email and password
+- The user clicks the “Login” button
+- The system verifies the credentials
+- The user is redirected to their dashboard
+• Exit Condition: The user is successfully logged in
+• Exception: If credentials are incorrect, the system displays an error message
+
+[UC3] Create Internship Offer
+• Name: Internship offer creation
+• Actors: Company
+• Entry Condition: The company is logged in and has accessed the "Create Offer" section
+• Event Flow:
+- The company clicks “Add New Offer”
+- The system displays a form to fill in offer details (e.g., title, description, required skills)
+- The company completes the form and submits it
+- The system validates the input and creates the offer
+- The offer is displayed to students
+• Exit Condition: The offer is successfully published
+• Exception: If required fields are missing, the system prompts the company to complete the form
+
+[UC4] Modify Internship offer
+• Name: Internship offer modification
+• Actors: Company
+• Entry Condition: The company is logged in and has accessed an existing internship offer they created
+• Event Flow:
+- The company selects an internship offer to modify
+- The system displays the existing details of the offer
+- The company updates the fields (e.g., title, description, required skills, duration)
+- The company submits the form
+- The system validates the input and saves the updates
+- The modified offer is displayed to students
+• Exit Condition: The internship offer is successfully updated and published with the new details
+• Exception: If required fields are missing, the system prompts the company to complete the updates
+
+[UC5] Delete Internship offer
+• Name: Delete internship offer
+• Actors: Company
+• Entry Condition: The company is logged in and has accessed an existing internship offer they created
+• Event Flow:
+- The company selects an internship offer to delete
+- The system prompts for confirmation of the deletion
+- The company confirms the deletion
+- The system deletes the offer from the platform and notifies any students who had applied to it
+• Exit Condition: The internship offer is successfully removed from the platform
+• Exception: If the deletion fails due to system errors, the platform notifies the company and retries
+
+[UC6] Browse and Filter Internship Offers
+• Name: Browse and Filter Internship Offers
+• Actors: Student
+• Entry Condition: The student is logged in and has accessed the internship offers section
+• Event Flow:
+- The system displays a list of internship offers available on the platform
+- The student uses filters (e.g., location, required skills, degree level) or keyword searching to refine the list
+- The system updates the displayed offers based on the applied filters
+- The student selects an offer to view its details
+- The system displays the selected offer's full description
+• Exit Condition: The student has found one or more relevant internship offers
+• Exception: If no offers match the student's filters, the system notifies the student and suggests removing some filters
+
+[UC7] Upload/Update CV
+• Name: Upload/Uodate CV
+• Actors: Student
+• Entry Condition: The student is logged in and has accessed their profile section
+• Event Flow:
+- The student clicks the “Upload CV” button
+- The system prompts the student to select a file from their device
+- The student uploads the file
+- The system validates the file format and size
+- The system saves the CV to the student's profile
+• Exit Condition: The CV is successfully uploaded and visible on the student's profile
+• Exception: If the file format is unsupported or the file exceeds size limits, the system rejects the upload and notifies the student
+
+[UC8] Apply for Internship Offer
+• Name: Apply for Internship Offer
+• Actors: Student
+• Entry Condition: The student is logged in, has uploaded a CV, and is viewing an internship offer
+• Event Flow:
+- The student selects an internship offer to apply for
+- The system displays a prompt to attach a CV or optional documents (e.g., cover letters)
+- The student attaches the required documents and submits the application
+- The system validates the documents and saves the application
+- The system notifies the company about the new application
+- The system sends a mail of confirmation of succesful application to student's email
+• Exit Condition: The application is successfully submitted to the company
+• Exception: If no CV is attached or the file format is invalid, the system notifies the student to correct the issue
+
+[UC8] Apply for Internship Offer
+• Name: Apply for Internship Offer
+• Actors: Student
+• Entry Condition: The student is logged in, has uploaded a CV, and is viewing an internship offer
+• Event Flow:
+- The student selects an internship offer to apply for
+- The system displays a prompt to attach a CV or optional documents (e.g., cover letters)
+- The student attaches the required documents and submits the application
+- The system validates the documents and saves the application
+- The system notifies the company about the new application
+- The system sends a mail of confirmation of succesful application to student's email
+• Exit Condition: The application is successfully submitted to the company
+• Exception: If no CV is attached or the file format is invalid, the system notifies the student to correct the issue
+
+
+
+
+
+
+
+
+
