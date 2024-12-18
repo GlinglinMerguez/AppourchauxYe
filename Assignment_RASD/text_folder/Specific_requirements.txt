@@ -268,9 +268,8 @@ TO DO : Use cases diagram
 
 [UC14] Generate Suggestions
 • Name: Generate Suggestions
-• Actors: System
-• Entry Condition: Feedback has been submitted by students and companies
-- The system collects feedback and analyzes it
+• Actors: System (Analysis tool)
+- The system analyzes student CVs and internship offers
 - The system identifies areas for improvement (e.g., CV content, job descriptions)
 - The system generates personalized suggestions for students and companies
 • Exit Condition: Suggestions are generated and stored
@@ -289,7 +288,7 @@ TO DO : Use cases diagram
 [UC16] Generate Recommendations
 • Name: Generate Recommendations
 • Actors: System (Matching algorithm)
-• Entry Condition: The system has access to CVs, offers and user preferences
+• Entry Condition: The system has access to CVs, offers and user feedback
 - The system analyzes CVs, offers, preferences and previous interview experiences using the matching algorithm
 - The system generates personalized recommendations for students and companies
 - The recommendations are saved in the system
