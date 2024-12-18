@@ -2,6 +2,7 @@ Yumeng Ye:
 
  - 3h on Introduction
  - 1h on diagrams
+ - 3h on specific requirements
 
 
 
@@ -9,3 +10,4 @@ Yumeng Ye:
 Léo Appourchaux:
 
  - 2h on Overall description
+ - 2h on diagrams
