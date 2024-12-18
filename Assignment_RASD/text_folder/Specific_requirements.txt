@@ -82,7 +82,7 @@ Feedback and Suggestions
 [R19] The system sends personalized suggestions to companies to improve their internship offers or recruitment strategies
 
 Matching and Recommendations
-[R20] The system uses a matching algorithm to analyze student CVs, internship offers and user preferences to generate recommendations
+[R20] The system uses a matching algorithm to analyze student CVs, internship offers and user feedback to generate recommendations
 [R21] The system sends internship recommendations to students based on their skills, preferences and qualifications
 [R22] The system sends candidate recommendations to companies based on the requirements of their internship offers
 
