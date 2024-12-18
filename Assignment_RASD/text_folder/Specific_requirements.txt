@@ -215,7 +215,6 @@ TO DO : Use cases diagram
 - The company finalizes the configuration and starts the process
 - The system notifies the selected candidates about the recruitment process
 • Exit Condition: The recruitment process is successfully initiated
-• Exception: If no candidates are selected, the system notifies the company to choose applicants
 
 
 [UC10] Schedule Interviews
