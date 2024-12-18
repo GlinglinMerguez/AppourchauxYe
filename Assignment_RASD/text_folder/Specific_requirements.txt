@@ -74,26 +74,25 @@ Recruitement Process Management
 [R13] The system provides tools for companies to evaluate, score and rank candidates based on test results, interview feedback and overall suitability
 [R14] The system notifies students of updates related to their recruitment status (e.g., rejected, hired, shortlisted)
 
-Feedback and Suggestions 
-[R15] The system allows students to provide feedback on their application and recruitment experiences
-[R16] The system allows companies to provide feedback on candidates they evaluated and recruitment experiences
-[R17] The system collects feedback from students and companies, analyzes it and generates actionable suggestions for both parties
-[R18] The system sends personalized suggestions to students to improve their CVs, profiles, cover letters or applications
-[R19] The system sends personalized suggestions to companies to improve their internship offers or recruitment strategies
+Suggestions 
+[R15] The system analyzes student CVs and internship offers to generates actionable suggestions for both student and company
+[R16] The system sends personalized suggestions to students to improve their CVs, profiles, cover letters or applications
+[R17] The system sends personalized suggestions to companies to improve their internship offers or recruitment strategies
 
 Matching and Recommendations
+[R18] The system allows students to provide feedback on their application and recruitment experiences
+[R19] The system allows companies to provide feedback on candidates they evaluated and recruitment experiences
 [R20] The system uses a matching algorithm to analyze student CVs, internship offers and user feedback to generate recommendations
-[R21] The system sends internship recommendations to students based on their skills, preferences and qualifications
-[R22] The system sends candidate recommendations to companies based on the requirements of their internship offers
+[R21] The system sends recommendations to both students and companies when a match found
 
 Complaints and Monitoring
-[R23] The system allows students and companies to submit complaints about any issues related to the internship or recruitment process
-[R24] The system allows universities to monitor and resolve complaints submitted by students or companies
-[R25] The system notifies universities of unresolved issues or complaints requiring attention
+[R22] The system allows students and companies to submit complaints about any issues related to the internship or recruitment process
+[R23] The system allows universities to monitor and resolve complaints submitted by students or companies
+[R24] The system notifies universities of unresolved issues or complaints requiring attention
 
 Notifications and Real-time Updates
-[R26] The system notifies students of application deadlines, interview schedules, test results and application status updates in real time
-[R27] The system notifies companies of updates on candidate applications and recruitment stages
+[R25] The system notifies students of application deadlines, interview schedules, test results and application status updates in real time
+[R26] The system notifies companies of updates on candidate applications and recruitment stages
 
 3.2.1
 TO DO : Use cases diagram
