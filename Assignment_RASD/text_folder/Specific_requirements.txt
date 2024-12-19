@@ -342,12 +342,41 @@ TO DO : Use cases diagram
 
 
 
+3.3 Performance Requirements
 
+The platform must deliver good performance to accommodate a substantial user base comprising both educators and students.
+To enhance user satisfaction and meet performance targets, the system must maintain swift response times not exceeding one second.
+It's important to note that user experience may be impacted by slow internet connectivity, potentially resulting in increased response times.
 
+3.4. Design Constraints
+3.4.1. Standards compliance
+The platform prioritizes user privacy by strictly adhering to the General Data Protection Regulation (GDPR), which governs data protection and privacy rights for individuals within the European Union (EU) and European Economic Area (EEA). Additionally, the system implements international date and time formats to maintain compliance with current standards.
 
+3.4.2. Hardware limitations
+The following hardware specifications outline the minimum requirements for optimal platform usage:
+• Network Connectivity: Users must have access to reliable internet service. Compatible network standards include 3G, 4G, 5G, IEEE 802.11, and IEEE 802.3. Connection must be established through appropriate network infrastructure such as modems, access points, or similar devices;
+• Device Specifications: Users require devices equipped with standard processing capabilities (equivalent to Intel i3 or i5), HD-quality display resolution or better, and minimum 4GB RAM capacity.
 
+3.4.3. Any other constraint
+Given the platform's extensive feature set and expected prolonged user engagement, the interface must emphasize user-friendliness and intuitive navigation.
 
+3.5. Software System Attributes
+The following section details essential software attributes required by the system.
 
+3.5.1. Reliability
+Long-term continuous operation necessitates robust system reliability. This is achieved through implementation of data replication and consistency mechanisms to prevent system failures. Additionally, regular offline backup procedures are essential for data recovery purposes.
+
+3.5.2. Availability
+System availability is paramount, with a target uptime of 99%. To achieve this, the platform implements comprehensive replication strategies and eliminates single points of failure. The system is specially engineered to handle peak loads during submission deadlines.
+
+3.5.3. Security
+Given the sensitive nature of stored personal data, security is critically important. The system implements encrypted password storage in the central database, comprehensive data protection measures against internal and external threats, and ensures data integrity, consistency, and confidentiality through robust cyber-security policies. Special attention is given to secure execution of student code during dynamic analysis to prevent malicious code execution.
+
+3.5.4. Maintainability
+The system emphasizes maintainability through comprehensive code documentation. Testing protocols must achieve minimum 75% code coverage, excluding UI components.
+
+3.5.5. Portability
+As a web-based application, the platform ensures cross-browser compatibility (Firefox, Google Chrome, etc.) and device responsiveness (smartphones, computers, and other devices).
 
 
 
