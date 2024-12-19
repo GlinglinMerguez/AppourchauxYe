@@ -68,7 +68,7 @@ The platform uses statistical analysis and CV-offer similarity to find probable 
 The platform collects various kinds of information during this process based for example on acceptances and refusals to feed and improve the statistical analysis. Users can also provide feedback which will also be studied by the platform to further improve their recommendation system.
 
 Support for selection process:
-The platform supports the selection by helping manage interviews, questionnaires, tests, etc. The platform also provides the companies with tools to compare how students performed in those tests to finalize the selections.
+The platform supports the selection by helping manage interviews, questionnaires, etc. The platform also provides the companies with tools to compare how students performed in those tests to finalize the selections.
 
 Monitoring:
 The platform provides spaces for communication, complaints, internship status monitoring, and matchmaking process monitoring to students, universities and companies.
