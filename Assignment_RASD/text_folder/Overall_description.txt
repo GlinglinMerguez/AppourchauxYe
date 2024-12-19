@@ -5,34 +5,76 @@
 2. A. 1. - Scenarios:
 
 Student uploads/updates a CV:
-The student can upload an already existing CV on the platform, provide information about their education, experiences, skills, etc.
+The student can upload an already existing CV on the platform.
 
 Student browses the offers:
 The student can look at the list of offers and filter by location, time, field, level of education, and by using keywords. They can then apply, which sends a notification to the company.
 
-Student gets a suggestion:
+Student receives a suggestion:
 The student periodically receives suggestions about how to improve their CV and can follow the suggestion step by step.
 
-Student gets a recommendation:
-The student periodically receives internship recommendations that may match their expectations, they can accept it and the platform will send a notification to the corresponding company.
+Student receives a recommendation:
+The student periodically receives internship recommendations that may match their profile, they can accept it and the platform will send a notification to the corresponding company.
+
+Student creates an application:
+The student can create an application for an offer.
+
+Student participates to a complaint space:
+The student can submit a complaint or take part to the conversation.
+
+Student takes a questionnaire:
+During the recruiting process, the student may take a questionnaire for a specific offer.
+
+Student participates in an interview:
+During the recruiting process, the student may participate to an interview with the company.
+
+Student monitors recruiting process:
+The student can monitor the current state of the recruiting process.
+
+Student provides feedback:
+The student can provide feedback at any time about the platform and the suggestions or recommendations they received.
 
 Company creates an offer:
 The company can create a new offer and specify all the details about the field, time, location, expected degree. This offer is then available for all students to see and advertised to those that may match.
 
-Company gets a suggestion:
+Company receives a suggestion:
 The company periodically receives suggestions on how to make the offers / project descriptions more appealing to students.
 
-Company gets a recommendation:
+Company receives a recommendation:
 The company periodically receives recommendations about student profiles. They can accept it and the platform will send a notification to the corresponding student.
 
-Company starts recruiting process:
+Company accepts or declines an application:
+When a student applies for a specific offer the company can accept the application if they want to proceed with the recruiting process with this student.
+
+Company starts the recruiting process:
 Once the user and the company both agree to their counterpart's offer, the company can communicate, send testing materials, and interview the student on the platform.
 
-User is unhappy:
-If a student or a company is unhappy about something, they can complain in the dedicated spaces on the platform. A solution can then be found by exchange between the students, the companies and the universities.
+Company collects questionnaire answers:
+Once the user has taken the questionnaire, the company can collect the answers and include them in their decision process.
 
-University monitors situation of internships:
+Company participates in an interview.
+During the recruiting process, the company may participate to an interview with the student to asses their profile.
+
+Company participates to a complaint space:
+The company can submit a complaint or take part to the conversation.
+
+Company provides feedback:
+The company can provide feedback at any time about the platform and the suggestions or recommendations they received.
+
+University monitors the recruiting process:
 The university has access to tools to monitor the status of the internships and to get info. They can interrupt an internship if an issue arises.
+
+University participates to a complaint space:
+The university can submit a complaint or take part to the conversation.
+
+Feedback improves matching algorithm:
+The feedback is sent to the database of the matching algorithm as additional data to perform analysis onto.
+
+Matching algorithm computes recommendation:
+With all the data at its disposal, the matching algorithm computes best matches and creates recommendation for companies and students.
+
+
+
 
 2. A. 2. - Domain class diagram
 
