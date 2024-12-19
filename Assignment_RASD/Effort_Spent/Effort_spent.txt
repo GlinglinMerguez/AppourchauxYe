@@ -1,7 +1,9 @@
 Yumeng Ye:
 
  - 3h on Introduction
- - 1h on diagrams
+ - 1h on class diagram
+ - 3h on specific requirements
+ - 2h on use case sequence diagrams
 
 
 
@@ -9,3 +11,4 @@ Yumeng Ye:
 Léo Appourchaux:
 
  - 2h on Overall description
+ - 5h on diagrams

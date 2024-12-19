@@ -1,0 +1,345 @@
+3.1 External Interface Requirements
+
+3.1.1 User Interfaces
+The platform should provide intuitive and accessible user interfaces tailored to the three main user groups : Students, Companies and Universities
+
+• Student Interface:
+    • Allows students to create accounts, upload CVs, search for offers by keywords and browse internship offers
+    • Displays personalized suggestions to improve CVs and provides recommandations for matching internships
+    • Offers a dashboard to track applications, manage interviews and communicate with Companies
+    • Includes a complaints section for reporting issues
+
+Image to put
+
+•  Company Interface:
+    • Enables companies to create  and publish detailed internship offers
+    • Offers tools for creating assessment tests and managing candidate evaluations, interviews and recruitement processes
+    • Displays suggestions to improve internship descriptions and recommendations for suitable candidates
+    • Includes a complaints section for reporting issues
+Image to put
+
+•  University Interface:
+    • Provides tools to monitor ongoing internships and address complaints from both students and companies
+    • Displays internship statuses, including student progress and company compliance
+Image to put
+
+
+3.1.2 Hardware Interfaces
+Our platform is a web app, as a consequence, it does not require any specific hardware
+ interface except for computer and any other device with web browser.
+
+3.1.3 Software Interfaces
+ The system will integrate with:
+ • Email services: For sending notifications, such as interview schedules and application updates
+ • Third-party APIs (University Internal Online Sercive): For university background checks
+ • External database systems : 
+    • Relational database (e.g. cloud-hosted MySQL) to store user information, intership offers and feedback
+    • NoSQL database (e.g. MongoDB Atlas) for storing unstructured data, such as CSV files or applications logs
+
+
+3.1.4 Communication Interfaces
+The system will use the following communication protocols:
+1. HTTPS
+    • For secure communication between the platform and its users
+    • HTTPS ensures data security by encrypting sensitive information, such as login credentials and feedback submissions
+    • This guarantees data privacy and integrity during communication
+2. RESTful APIs
+    • For interaction between frontend (user interface) and backend services (server logic)
+    • Enables strctured data exchange and facilitates integration with third-party services like email systems or university APIs
+    • This ensures scalability and flexibility for future enhancements
+3. WebSocket
+    • For real-time communication between the platform and its users, such as real-time updates on application statuses, interviews schedules, feedback and notifications
+
+3.2 Functional Requirements
+
+Sign up and log in 
+[R1] The system allows users (students, companies and universities) to register by providing their personal information (full name, organization etc), a valid email address and a password
+[R2] The system allows registered users to log in and access the platform's features based on their roles
+
+Internship Offers Management
+[R3] The system allows companies to create, modify and delete internship offers
+[R4] The system allows companies to manage the status of internship offers (e.g., open, closed, completed)
+[R5] The system allows students to browse and filter internship offers based on criteria like location, field, required skills and degree level
+[R6] The system notifies students abut new internship offers matching their profile and preference
+
+CV and Application Management
+[R7] The system allows students to upload CV on the platform
+[R8] The system allows students to update their CVs and keep their profiles up to date
+[R9] The system allows students to apply to internship offers directly from the platform by attaching their CVs and adding optional documents (e.g. cover letters)
+[R10] The system allows companies to view, evalute and shortlist applications received for their internship offers
+
+Recruitement Process Management
+[R11] The system allows companies to initiate recruitment process that may include tests, interviews or both
+[R12] The system allows companies to manage recruitment stages, including scheduling interviews, assigning tests and evaluating results
+[R13] The system provides tools for companies to evaluate, score and rank candidates based on test results, interview feedback and overall suitability
+[R14] The system notifies students of updates related to their recruitment status (e.g., rejected, hired, shortlisted)
+
+Suggestions 
+[R15] The system analyzes student CVs and internship offers to generates actionable suggestions for both student and company
+[R16] The system sends personalized suggestions to students to improve their CVs, profiles, cover letters or applications
+[R17] The system sends personalized suggestions to companies to improve their internship offers or recruitment strategies
+
+Matching and Recommendations
+[R18] The system allows students to provide feedback on their application and recruitment experiences
+[R19] The system allows companies to provide feedback on candidates they evaluated and recruitment experiences
+[R20] The system uses a matching algorithm to analyze student CVs, internship offers and user feedback to generate recommendations
+[R21] The system sends recommendations to both students and companies when a match found
+
+Complaints and Monitoring
+[R22] The system allows students and companies to submit complaints about any issues related to the internship or recruitment process
+[R23] The system allows universities to monitor and resolve complaints submitted by students or companies
+[R24] The system notifies universities of unresolved issues or complaints requiring attention
+
+Notifications and Real-time Updates
+[R25] The system notifies students of application deadlines, interview schedules, test results and application status updates in real time
+[R26] The system notifies companies of updates on candidate applications and recruitment stages
+
+3.2.1
+TO DO : Use cases diagram
+
+3.2.2 Use Cases
+[UC1] User registration 
+• Name: User Registration
+• Actors: Student, Company, University
+• Entry Condition: The user has accessed the registration page of the platform
+• Event Flow:
+- The user clicks the “Register” button
+- The system displays a registration form
+- The user fills in the required fields (e.g., full name, email, password)
+- The user submits the form
+- The system validates the data and creates an account
+- The system displays the login view
+• Exit Condition: The user account is successfully registered
+• Exception: If the email already exists, the system notifies the user and suggests logging in instead
+
+[UC2] User Login
+• Name: User login
+• Actors: Student, Company, University
+• Entry Condition: The user has accessed the registration page of the platform
+• Event Flow:
+- The user enters their email and password
+- The user clicks the “Login” button
+- The system verifies the credentials
+- The user is redirected to their dashboard
+• Exit Condition: The user is successfully logged in
+• Exception: If credentials are incorrect, the system displays an error message
+
+[UC3] Create Internship Offer
+• Name: Internship offer creation
+• Actors: Company
+• Entry Condition: The company is logged in and has accessed the "Create Offer" section
+• Event Flow:
+- The company clicks “Add New Offer”
+- The system displays a form to fill in offer details (e.g., title, description, required skills)
+- The company completes the form and submits it
+- The system validates the input and creates the offer
+- The offer is displayed to students
+• Exit Condition: The offer is successfully published
+• Exception: If required fields are missing, the system prompts the company to complete the form
+
+[UC4] Modify Internship offer
+• Name: Internship offer modification
+• Actors: Company
+• Entry Condition: The company is logged in and has accessed an existing internship offer they created
+• Event Flow:
+- The company selects an internship offer to modify
+- The system displays the existing details of the offer
+- The company updates the fields (e.g., title, description, required skills, duration)
+- The company submits the form
+- The system validates the input and saves the updates
+- The modified offer is displayed to students
+• Exit Condition: The internship offer is successfully updated and published with the new details
+• Exception: If required fields are missing, the system prompts the company to complete the updates
+
+[UC5] Delete Internship offer
+• Name: Delete internship offer
+• Actors: Company
+• Entry Condition: The company is logged in and has accessed an existing internship offer they created
+• Event Flow:
+- The company selects an internship offer to delete
+- The system prompts for confirmation of the deletion
+- The company confirms the deletion
+- The system deletes the offer from the platform and notifies any students who had applied to it
+• Exit Condition: The internship offer is successfully removed from the platform
+• Exception: If the deletion fails due to system errors, the platform notifies the company and retries
+
+[UC6] Browse and Filter Internship Offers
+• Name: Browse and Filter Internship Offers
+• Actors: Student
+• Entry Condition: The student is logged in and has accessed the internship offers section
+• Event Flow:
+- The system displays a list of internship offers available on the platform
+- The student uses filters (e.g., location, required skills, degree level) or keyword searching to refine the list
+- The system updates the displayed offers based on the applied filters
+- The student selects an offer to view its details
+- The system displays the selected offer's full description
+• Exit Condition: The student has found one or more relevant internship offers
+• Exception: If no offers match the student's filters, the system notifies the student and suggests removing some filters
+
+[UC7] Upload/Update CV
+• Name: Upload/Uodate CV
+• Actors: Student
+• Entry Condition: The student is logged in and has accessed their profile section
+• Event Flow:
+- The student clicks the “Upload CV” button
+- The system prompts the student to select a file from their device
+- The student uploads the file
+- The system validates the file format and size
+- The system saves the CV to the student's profile
+• Exit Condition: The CV is successfully uploaded and visible on the student's profile
+• Exception: If the file format is unsupported or the file exceeds size limits, the system rejects the upload and notifies the student
+
+[UC8] Apply for Internship Offer
+• Name: Apply for Internship Offer
+• Actors: Student
+• Entry Condition: The student is logged in, has uploaded a CV, and is viewing an internship offer
+• Event Flow:
+- The student selects an internship offer to apply for
+- The system displays a prompt to attach a CV or optional documents (e.g., cover letters)
+- The student attaches the required documents and submits the application
+- The system validates the documents and saves the application
+- The system notifies the company about the new application
+- The system sends a mail of confirmation of succesful application to student's email
+• Exit Condition: The application is successfully submitted to the company
+• Exception: If no CV is attached or the file format is invalid, the system notifies the student to correct the issue
+
+[UC9] Initiate Recruitment Process
+• Name: Initiate Recruitment Process
+• Actors: Company
+• Entry Condition: The company is logged in and has received applications for an internship offer
+• Event Flow:
+- The company selects an internship offer with pending applications
+- The system displays a list of received applications
+- The company clicks the “Initiate Recruitment Process” button
+- The system prompts the company to configure the recruitment process (e.g., tests, interviews)
+- The company finalizes the configuration and starts the process
+- The system notifies the selected candidates about the recruitment process
+• Exit Condition: The recruitment process is successfully initiated
+
+
+[UC10] Schedule Interviews
+• Name: Schedule Interviews
+• Actors: Company, Students
+• Entry Condition: The recruitment process has been initiated and candidates have been shortlisted
+• Event Flow:
+- The company selects a candidate from the recruitment process
+- The system displays a scheduling interface for interviews
+- The company sets mutiples possible interview dates, time, and format (e.g., online or in-person)
+- The system notifies the candidate about the scheduled interview
+- The student chooses the slot he wants
+- The system notifies the company and the interview slot is fixed on both student and company's calendar
+• Exit Condition: The interview is successfully scheduled and saved in the system
+• Exception: If scheduling conflicts occur, the system prompts the company to choose a different time
+
+[UC11] Assign Tests
+• Name: Assign Tests
+• Actors: Company, Students
+• Entry Condition: The recruitment process has been initiated and the company has chosen to include tests
+- The company selects a candidate or a group of candidates
+- The system displays a list of available tests or allows the company to create a new test
+- The company assigns the test(s) to the selected candidates
+- The system notifies the candidates and provides a link to access the test
+• Exit Condition: The test is successfully assigned to the candidates
+• Exception: If the test is incomplete or missing details, the system prompts the company to finalize it before assigning
+
+[UC12] Evaluate and Score Candidates
+• Name: Evaluate and Score Candidates
+• Actors: Company
+• Entry Condition: Tests have been completed, or interviews have been conducted as part of the recruitment process
+• Event Flow:
+- The system provides the company with access to test results and interview feedback
+- The company evaluates candidates based on the provided data
+- The company assigns scores to each candidate
+- The system updates each candidate's application status and rankings based on the scores
+• Exit Condition: The evaluation is saved and candidates are ranked accordingly
+• Exception: If scores are not entered, the system flags the evaluation as incomplete
+
+[UC13] Provide Feedback
+• Name: Provide Feedback
+• Actors: Company,Student
+• Entry Condition: The recruitment process has been completed
+• Event Flow:
+- The system prompts students and companies to provide feedback
+- The user fills in a feedback form with ratings and comments
+- The system validates and saves the feedback
+• Exit Condition: The feedback is successfully recorded in the system
+• Exception: If submission fails due to network issues, the system retries or notifies the user
+
+[UC14] Generate Suggestions
+• Name: Generate Suggestions
+• Actors: System (Analysis tool)
+- The system analyzes student CVs and internship offers
+- The system identifies areas for improvement (e.g., CV content, job descriptions)
+- The system generates personalized suggestions for students and companies
+• Exit Condition: Suggestions are generated and stored
+• Exception: If feedback data is incomplete, the system generates partial suggestions
+
+[UC15] Receive Suggestions
+• Name: Receive Suggestions
+• Actors: Company, Student
+• Entry Condition: Suggestions have been generated by the system
+- The system notifies the user about the availability of suggestions
+- The user views the suggestions on their dashboard
+- The user accepts or ignores the suggestions
+• Exit Condition: The user has received and reviewed the suggestions
+• Exception: If suggestions fail to load, the system retries or notifies the user
+
+[UC16] Generate Recommendations
+• Name: Generate Recommendations
+• Actors: System (Matching algorithm)
+• Entry Condition: The system has access to CVs, offers and user feedback
+- The system analyzes CVs, offers, preferences and previous interview experiences using the matching algorithm
+- The system generates personalized recommendations for students and companies
+- The recommendations are saved in the system
+• Exit Condition: Recommendations are successfully generated
+• Exception: If data is incomplete, the system generates fewer or no recommendations
+
+[UC17] Receive Recommendations
+• Name: Receive Recommendations
+• Actors: Company, Student
+• Entry Condition: Recommendations have been generated and sent to the respective users
+- The system notifies the user about the availability of recommendations
+- The user views the recommendations on their dashboard
+- The user accepts or declines the recommendations
+    1) If accepted, the system updates the recommendation status to "accepted" for that user
+    2) If rejected, the system updates the status to "declined."
+- When both parties (student and company) accept a recommendation, the system establishes a "Contact" between the student and company, and triggers the recruitment process
+• Exit Condition: The user has received and reviewed the recommendations
+• Exception: If recommendations fail to load, the system retries or notifies the user
+
+[UC18] Submit Complaint
+• Name: Submit Complaint
+• Actors: Company, Student
+• Entry Condition: The user has an issue related to the internship or recruitment process
+- The user navigates to the complaints section
+- The user fills in a complaint form, providing details of the issue
+- The system saves the complaint and notifies the university
+• Exit Condition: The complaint is successfully submitted
+• Exception: If submission fails due to network issues, the system retries or notifies the user
+
+[UC19]  Monitor and Resolve Complaint
+• Name:  Monitor and Resolve Complaint
+• Actors: University
+• Entry Condition: A complaint has been submitted by a student or company
+- The university reviews the complaint in the system
+- The system displays all relevant details about the complaint
+- The university takes appropriate action (e.g., contact parties, resolve issues)
+- The system updates the status of the complaint
+- The system notifies the complainant of the resolution
+• Exit Condition: The complaint is resolved and closed
+• Exception: If additional details are required, the system prompts the complainant for clarification
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
