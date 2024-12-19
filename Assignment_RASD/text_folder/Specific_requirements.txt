@@ -305,11 +305,17 @@ TO DO : Use cases diagram
 • Name:  Monitor and Resolve Complaint
 • Actors: University
 • Entry Condition: A complaint has been submitted by a student or company, and the university is logged in
-- The university reviews the complaint in the system
+- The university accesses the complaint management section
+- The system displays the list of pending complaints
+- The university selects a specific complaint
 - The system displays all relevant details about the complaint
-- The university takes appropriate action create communication channels to contact relevant parties
-- The system updates the status of the complaint
-• Exit Condition: The complaint is resolved and closed
+- The university reviews the complaint details and severity
+- The university creates appropriate communication channels with involved parties
+- The university documents the actions taken and resolution
+- The system updates the complaint status
+- The system notifies involved parties about the resolution
+• Exit Condition: A resolution is proposed 
+• Exception : If the complaint needs further investigation, the university can keep the status as "in progress" and continue the resolution process
 
 [UC19]  Interview scheduling
 • Name:  Interview scheduling
