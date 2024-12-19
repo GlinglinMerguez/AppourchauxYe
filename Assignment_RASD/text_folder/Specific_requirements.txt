@@ -214,8 +214,8 @@ TO DO : Use cases diagram
 - The system prompts the company to configure the recruitment process (e.g., tests, interviews)
 - The company finalizes the configuration and starts the process
 - The system notifies the selected candidates about the recruitment process
-• Exit Condition: The recruitment process is successfully initiated
-
+• Exit Condition: The recruitment process configuration is completed and selected candidates are notified
+• Exception: If the company doesn’t configure the process, it remains in a “pending” state
 
 [UC10] Schedule Interviews
 • Name: Schedule Interviews
@@ -329,7 +329,29 @@ TO DO : Use cases diagram
 • Exit Condition: The complaint is resolved and closed
 • Exception: If additional details are required, the system prompts the complainant for clarification
 
+[UC20]  Interview scheduling
+• Name:  Interview scheduling
+• Actors: Student
+• Entry Condition: The student has received a notification about the interview invitation
+- The student receives a notification about the interview via email or platform message
+- The student logs into the system and views the interview details (slots)
+- The student confirms participation in the interview and selects preferred slot 
+- The system updates the schedule
+- The system notifies the company about student's confirmation
+• Exit Condition: The slot is scheduled
+• Exception: If the student does not respond to the notification or skips the steps, they are marked as “not participating.”
 
+[UC21]  Interview scheduling
+• Name:  Interview scheduling
+• Actors: Student
+• Entry Condition: The student has received a notification about the interview invitation
+- The student receives a notification about the interview via email or platform message
+- The student logs into the system and views the interview details (slots)
+- The student confirms participation in the interview and selects preferred slot 
+- The system updates the schedule
+- The system notifies the company about student's confirmation
+• Exit Condition: The slot is scheduled
+• Exception: If the student does not respond to the notification or skips the steps, they are marked as “not participating.”
 
 
 
