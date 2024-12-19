@@ -345,13 +345,30 @@ TO DO : Use cases diagram
 • Name:  Interview scheduling
 • Actors: Student
 • Entry Condition: The student has received a notification about the interview invitation
-- The student receives a notification about the interview via email or platform message
-- The student logs into the system and views the interview details (slots)
-- The student confirms participation in the interview and selects preferred slot 
-- The system updates the schedule
-- The system notifies the company about student's confirmation
-• Exit Condition: The slot is scheduled
+- The system notifies the student about the interview process and available slots
+- The student logs into the system and navigates to the interview scheduling section
+- The system displays the available interview slots
+- The student selects a preferred interview slot from the list
+- The system confirms the slot and updates the interview schedule for both the student and the company
+- If no preferred slot is available, the student clicks on the “Indicate Availability” button
+- The system prompts the student to specify their available dates and times
+- The system sends this information to the company for further action
+• Exit Condition: 
+- The slot is scheduled
+- The student’s availability has been communicated to the company for further scheduling
 • Exception: If the student does not respond to the notification or skips the steps, they are marked as “not participating.”
+
+[UC22]  Test taking
+• Name:  Interview taking
+• Actors: Student
+• Entry Condition: The student has been notified about the recruitment process and is eligible to take a recruitment test
+- The system notifies the student about the recruitment test and provides a link to access it
+- The student logs into the system and selects the recruitment test link
+- The system presents the test interface (e.g., coding problems, multiple-choice questions) 
+- The student completes the test within the provided time frame
+- The student submits the test
+- The system validates the submission, records the results and updates the recruitment progress 
+• Exit Condition: The student has successfully submitted the test
 
 
 
