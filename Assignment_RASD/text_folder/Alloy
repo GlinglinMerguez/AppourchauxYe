@@ -112,6 +112,13 @@ fact cvLinkedToOneStudent {
     all cuvitae: CV | one s: Student | cuvitae in s.cv
 }
 
+// Fact to ensure that a recommendation can only exist once between a student and a company for a given offer
+fact uniqueRecommendation {
+    all s: Student, c: Company, o: InternshipOffer |
+        lone r: Recommendation | 
+            r.student = s and r.offer = o and r in s.studentRecommendations and r in c.companyRecommendations
+}
+
 // Run command to simulate the scenario where a student applies to offers, 
 // companies send recommendations, and recruitment process is triggered.
 run {
