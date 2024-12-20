@@ -1,4 +1,4 @@
-module internshipPlatform
+module internshipPlatformMatching
 
 // Abstract signatures for users
 abstract sig User {
@@ -8,28 +8,13 @@ abstract sig User {
 
 // User types
 sig Student extends User {
-    cv: lone CV,
-    applications: set Application,
-    feedback: set Feedback,
-    complaints: set Complaint
+    skills: set String,
+    preferences: set String,
+    applications: set Application
 }
 
 sig Company extends User {
-    offers: set InternshipOffer,
-    evaluations: set Evaluation,
-    companyFeedback: set Feedback,
-    companyComplaints: set Complaint
-}
-
-sig University extends User {
-    monitoredComplaints: set Complaint
-}
-
-// CV and related components
-sig CV {
-    owner: one Student,
-    content: one String,
-    lastUpdated: one Time
+    offers: set InternshipOffer
 }
 
 // Internship offers
@@ -38,185 +23,57 @@ sig InternshipOffer {
     title: one String,
     description: one String,
     requiredSkills: set String,
-    status: one OfferStatus,
-    applications: set Application
+    preferredSkills: set String,
+    status: one OfferStatus
 }
 
-// Application status
+// Offer status
 enum OfferStatus { ACTIVE, CLOSED, COMPLETED }
 
 // Applications
 sig Application {
     student: one Student,
     offer: one InternshipOffer,
-    status: one ApplicationStatus,
-    submissionDate: one Time
+    status: one ApplicationStatus
 }
 
 // Application status
-enum ApplicationStatus { PENDING, SHORTLISTED, INTERVIEWED, REJECTED, ACCEPTED }
+enum ApplicationStatus { PENDING, SHORTLISTED, ACCEPTED, REJECTED }
 
-// Score as a sig to handle numeric values
-sig Score {
-    value: Int
+// Matching rules
+fun matchingScore(s: Student, o: InternshipOffer): Int {
+    let studentSkills = s.skills,
+        offerSkills = o.requiredSkills + o.preferredSkills |
+    # (studentSkills & offerSkills) // Number of matching skills
 }
 
-// Rating as a sig to handle numeric values
-sig Rating {
-    value: Int
-}
-
-// Evaluation
-sig Evaluation {
-    application: one Application,
-    company: one Company,
-    score: one Score,
-    comments: one String
-}
-
-// Feedback
-sig Feedback {
-    from: one User,
-    content: one String,
-    rating: one Rating,
-    timestamp: one Time
-}
-
-// Complaints
-sig Complaint {
-    from: one User,
-    content: one String,
-    status: one ComplaintStatus,
-    resolver: lone University
-}
-
-// Complaint status
-enum ComplaintStatus { NEW, IN_PROGRESS, RESOLVED }
-
-// Time for tracking timestamps
-sig Time {}
-
-// Facts to enforce structural constraints
-
-// Each CV belongs to exactly one student
-fact CVOwnership {
-    all c: CV | one s: Student | c.owner = s
-}
-
-// Each application belongs to exactly one student and one offer
-fact ApplicationConstraints {
-    all a: Application | one s: Student, o: InternshipOffer |
-        a.student = s and a.offer = o
-}
-
-// A student cannot apply multiple times to the same offer
-fact NoDoubleApplications {
+// Matching predicate
+pred matchOffers {
     all s: Student, o: InternshipOffer |
-        lone a: Application |
-            a.student = s and a.offer = o
+        o.status = ACTIVE and
+        some (s.skills & o.requiredSkills) and
+        some (s.skills & o.preferredSkills) implies {
+            some a: Application |
+                a.student = s and
+                a.offer = o and
+                a.status = PENDING
+        }
 }
 
-// Each evaluation must be made by the company that posted the offer
-fact ValidEvaluations {
-    all e: Evaluation |
-        e.company = e.application.offer.company
-}
 
-// Score must be between 0 and 100
-fact ValidScores {
-    all s: Score | s.value >= 0 and s.value <= 100
-}
 
-// Rating must be between 1 and 5
-fact ValidRatings {
-    all r: Rating | r.value >= 1 and r.value <= 5
-}
-
-// Predicates for common operations
-
-// Student uploads CV
-pred uploadCV[s: Student, c: CV, t: Time] {
-    c.owner = s
-    c.lastUpdated = t
-    // Add CV to student's profile
-    s.cv = c
-}
-
-// Company creates internship offer
-pred createOffer[c: Company, o: InternshipOffer] {
-    o.company = c
-    o.status = ACTIVE
-    // Add offer to company's offers
-    c.offers = c.offers + o
-}
-
-// Student applies to offer
-pred applyToOffer[s: Student, o: InternshipOffer, a: Application, t: Time] {
-    // Offer must be active
-    o.status = ACTIVE
-    // Create new application
-    a.student = s
-    a.offer = o
-    a.status = PENDING
-    a.submissionDate = t
-    // Add application to student's applications
-    s.applications = s.applications + a
-    // Add application to offer's applications
-    o.applications = o.applications + a
-}
-
-// Company evaluates application
-pred evaluateApplication[c: Company, a: Application, e: Evaluation, s: Score] {
-    // Company must own the offer
-    a.offer.company = c
-    // Create evaluation
-    e.application = a
-    e.company = c
-    e.score = s
-    // Add evaluation to company's evaluations
-    c.evaluations = c.evaluations + e
-}
-
-// User submits complaint
-pred submitComplaint[u: User, c: Complaint] {
-    c.from = u
-    c.status = NEW
-    // Add complaint to appropriate set based on user type
-    u in Student implies (let s = u | s.complaints = s.complaints + c)
-    u in Company implies (let comp = u | comp.companyComplaints = comp.companyComplaints + c)
-}
-
-// University resolves complaint
-pred resolveComplaint[u: University, c: Complaint] {
-    c.resolver = u
-    c.status = RESOLVED
-    // Add complaint to university's monitored complaints
-    u.monitoredComplaints = u.monitoredComplaints + c
-}
-
-// Run some example scenarios
+// Example data for simulation
 run {
-    some s: Student, c: Company, o: InternshipOffer, a: Application, t: Time |
-        createOffer[c, o] and applyToOffer[s, o, a, t]
+    // Create example students and offers
+    some s1, s2: Student |
+        s1.skills = {"Java" + "Python" + "SQL"} and
+        s2.skills = {"Python" + "Data Analysis"} and
+
+    some o1, o2: InternshipOffer |
+        o1.requiredSkills = {"Python" + "SQL"} and o1.preferredSkills = {"Data Analysis"} and o1.status = ACTIVE and
+        o2.requiredSkills = {"Java"} and o2.preferredSkills = {"Machine Learning"} and o2.status = ACTIVE and
+
+    // Match students to offers
+    matchOffers
 } for 5
-
-// Assert important properties
-assert NoUnownedApplications {
-    all a: Application | some s: Student | a in s.applications
-}
-
-assert ValidApplicationFlow {
-    all a: Application |
-        a.status = ACCEPTED implies (some e: Evaluation | e.application = a)
-}
-
-assert ProperComplaintHandling {
-    all c: Complaint |
-        c.status = RESOLVED implies (some u: University | c.resolver = u)
-}
-
-// Check assertions
-check NoUnownedApplications for 5
-check ValidApplicationFlow for 5
-check ProperComplaintHandling for 5
 
