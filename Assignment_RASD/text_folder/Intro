@@ -15,18 +15,18 @@ Students&Companies (S&C) tries to solve this problem. The platform allows studen
 In this section, we define the domain of the Students&Companies(S&C) platform, which serves two primary user groups : students and companies. The platform is designed to simplify the process of matching students with internship opportunities based on their skills and aspirations, while allowing companies to find the most suitable candidates for their internship offers.
 For students, the process begins with creating an account on the platform, where they upload their CVs and other relevant documents. Companies, on the other hand, create detailed internship offers that describe the tasks, required skills and benefits. The platform uses matching algorithms to help both parties find the best fit. Once students apply, companies can review CVs, send assessments, schedule interviews, and select candidates.
 The platform also sends personalized suggestions:
-●	To students : the platform provides suggestions for improving their CVs and profiles to better match industry expectations
-●	To companies : the platform suggests ways to make internship offers more appealing
+●	To students: the platform provides suggestions for improving their CVs and profiles to better match industry expectations
+●	To companies: the platform suggests ways to make internship offers more appealing
 After each selection process, the platform collects feedback from both students and companies. This feedback is analyzed and shared with relevant parties to refine recommendations and further improve the matching process.
 1.2.1 World Phenomena
-These are the real-world events or actions that influence how the platform works :
+These are the real-world events or actions that influence how the platform works:
 [WP1] Companies define internship needs
 [WP2] Students prepare and update their CVs
 [WP3] Students decide which internships to apply for
 [WP4] Companies decide which candidates to interview or assess
-[WP5]  Students and companies provide feedback on the selection process and interactions
+[WP5] Students and companies provide feedback on the selection process and interactions
 1.2.2 Shared Phenomena
-These phenomena are controlled by both the world (students, companies, universities) and the machine (platform algorithms and systems) :
+These phenomena are controlled by both the world (students, companies, universities) and the machine (platform algorithms and systems):
 World-Controlled Phenomena
 ●	[SP1] Students create accounts and upload relevant documents (e.g., CVs)
 ●	[SP2] Companies post internships on the platform
