@@ -2,19 +2,28 @@ module internshipPlatformMatching
 
 // Abstract signatures for users
 abstract sig User {
-    email: one String,
-    password: one String
+    email: one String
 }
 
 // User types
 sig Student extends User {
+    cv: one CV,       // Each student has a CV
+    belongsTo: one University // Each student belongs to a university
+}
+
+sig CV {
     skills: set String,
-    preferences: set String,
-    applications: set Application
+    preferences: set String
 }
 
 sig Company extends User {
     offers: set InternshipOffer
+}
+
+sig University extends User {
+    name: one String,
+    students: set Student, // University has multiple students
+    complaints: set Complaint // University handles complaints
 }
 
 // Internship offers
@@ -40,40 +49,73 @@ sig Application {
 // Application status
 enum ApplicationStatus { PENDING, SHORTLISTED, ACCEPTED, REJECTED }
 
+// Complaints
+sig Complaint {
+    submitter: one User, // Can be either a student or a company
+    content: one String  // Content of the complaint
+}
+
 // Matching rules
 fun matchingScore(s: Student, o: InternshipOffer): Int {
-    let studentSkills = s.skills,
-        offerSkills = o.requiredSkills + o.preferredSkills |
-    # (studentSkills & offerSkills) // Number of matching skills
+    #(s.cv.skills & (o.requiredSkills + o.preferredSkills))
 }
 
 // Matching predicate
 pred matchOffers {
     all s: Student, o: InternshipOffer |
-        o.status = ACTIVE and
-        some (s.skills & o.requiredSkills) and
-        some (s.skills & o.preferredSkills) implies {
-            some a: Application |
+        (o.status = ACTIVE and
+        some (s.cv.skills & o.requiredSkills) and
+        some (s.cv.preferences & o.preferredSkills)) implies {
+            one a: Application |
                 a.student = s and
                 a.offer = o and
                 a.status = PENDING
         }
 }
 
+// Facts
+fact universityFacts {
+    // Each student belongs to exactly one university
+    all s: Student | one u: University | s.belongsTo = u and s in u.students
+    // Each offer belongs to exactly one company
+    all o: InternshipOffer | one c: Company | o.company = c and o in c.offers
+}
 
+fact applicationStatus {
+    // Applications can only exist for active offers
+    all a: Application | a.offer.status = ACTIVE
+}
 
-// Example data for simulation
+// Predicate to check complaints by user
+pred submitComplaint[c: Complaint, complainer: User, message: String] {
+    c.submitter = complainer
+    c.content = message
+}
+
+// Run command
 run {
-    // Create example students and offers
-    some s1, s2: Student |
-        s1.skills = {"Java" + "Python" + "SQL"} and
-        s2.skills = {"Python" + "Data Analysis"} and
-
-    some o1, o2: InternshipOffer |
-        o1.requiredSkills = {"Python" + "SQL"} and o1.preferredSkills = {"Data Analysis"} and o1.status = ACTIVE and
-        o2.requiredSkills = {"Java"} and o2.preferredSkills = {"Machine Learning"} and o2.status = ACTIVE and
-
-    // Match students to offers
-    matchOffers
-} for 5
+    // Create just one student who applies to one offer
+    some s: Student, c: Company, o: InternshipOffer, u: University |
+        // Basic setup
+        s.belongsTo = u and
+        s in u.students and
+        o.company = c and
+        o in c.offers and
+        o.status = ACTIVE and
+        
+        // Simple skills setup
+        s.cv.skills = {"Java"} and
+        o.requiredSkills = {"Java"} and
+        
+        // One application
+        one a: Application |
+            a.student = s and
+            a.offer = o and
+            a.status = PENDING
+} for 3 but 
+    exactly 1 Student,
+    exactly 1 Company,
+    exactly 1 InternshipOffer,
+    exactly 1 University,
+    exactly 1 Application
 
