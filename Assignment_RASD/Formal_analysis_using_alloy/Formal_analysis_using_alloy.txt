@@ -1,11 +1,10 @@
-// Simple first step 
 module internshipPlatformMatching
 
 abstract sig User {}
 
 sig Student extends User {
     cv: one CV,
-    from: one University 
+    from: one University
 }
 
 sig CV {
@@ -35,32 +34,50 @@ sig Application {
     status: one Status
 }
 
+// Signature for Recommendation
+sig Recommendation {
+    offer: one InternshipOffer,  // The offer being recommended
+    sentToStudent: one Student,  // The student receiving the recommendation
+    sentToCompany: one Company   // The company receiving the recommendation
+}
+
 // Fact to ensure each CV is linked to exactly one student
 fact cvLinkedToOneStudent {
-    // Each CV must be linked to exactly one student
     all c: CV | one s: Student | c = s.cv
 }
 
 // Fact to ensure unique applications per student and offer
 fact uniqueApplications {
-    // A student can only send one application to each offer
     all s: Student, o: InternshipOffer |
         lone a: Application | 
             a.sentBy = s and 
             a.relatedTo = o
 }
 
-// Simple run command
+// Fact to create recommendations
+fact validRecommendations {
+    all r: Recommendation | {
+        let s = r.sentToStudent, o = r.offer, c = r.sentToCompany |
+        // A recommendation must have valid links
+        some (s.cv.skills & o.requiredSkills) and
+        some (s.cv.preferences & o.title) and
+        c = o.publishedBy
+    }
+}
+
+
+
+// Simple run command to test if recommendation appears or not
 run {
     // Create basic instance
     some s: Student, o: InternshipOffer | {
         // Set up student skills
-        s.cv.skills = {"Python"}
+        s.cv.skills = {"Python"+"Java"}
         s.cv.preferences = {"Developer"}
         
         // Set up offer details
         o.title = "Developer"
-        o.requiredSkills = {"Python"}
+        o.requiredSkills = {"Java"}
         
         // Create an application
         one a: Application | {
