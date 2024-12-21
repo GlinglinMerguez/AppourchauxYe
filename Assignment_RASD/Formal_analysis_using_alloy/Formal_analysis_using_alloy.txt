@@ -67,7 +67,7 @@ fact validRecommendations {
 
 
 
-// Simple run command to test if recommendation appears or not
+// Simple run command
 run {
     // Create basic instance
     some s: Student, o: InternshipOffer | {
@@ -77,7 +77,10 @@ run {
         
         // Set up offer details
         o.title = "Developer"
-        o.requiredSkills = {"Java"}
+        o.requiredSkills = {"C++"+"SQL"}
+
+	// Directly reference the requiredSkills to ensure it's included
+	some r: InternshipOffer | r.requiredSkills = o.requiredSkills
         
         // Create an application
         one a: Application | {
