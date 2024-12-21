@@ -115,3 +115,37 @@ run twoStudentsScenario {
     exactly 1 InternshipOffer,
     exactly 1 University,
     exactly 1 Recommendation
+
+
+
+run studentApplicationScenario {
+    some s: Student, o: InternshipOffer | {
+        // Set up student skills and preferences
+        s.cv.skills = {"Python" + "Java"}
+        s.cv.preferences = {"Developer"}
+        
+        // Set up the internship offer
+        o.title = "Developer"
+        o.requiredSkills = {"Python" + "Java"}
+        o.publishedBy in Company
+        
+        // Create the application
+        some a: Application | {
+            a.sentBy = s
+            a.relatedTo = o
+            a.status = Pending  // Initial status is Pending
+        }
+        
+        // Ensure no recommendation exists (due to our mutual exclusion fact)
+        no r: Recommendation | 
+            r.sentToStudent = s and 
+            r.offer = o
+    }
+    no Recommendation
+} for 5 but 
+    exactly 1 Student,
+    exactly 1 CV,
+    exactly 1 Company,
+    exactly 1 InternshipOffer,
+    exactly 1 University,
+    exactly 1 Application,  // Explicitly stating we don't want any recommendations
