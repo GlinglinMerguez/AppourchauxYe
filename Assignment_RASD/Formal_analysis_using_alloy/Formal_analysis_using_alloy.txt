@@ -1,0 +1,78 @@
+// Simple first step 
+module internshipPlatformMatching
+
+abstract sig User {}
+
+sig Student extends User {
+    cv: one CV,
+    from: one University 
+}
+
+sig CV {
+    skills: set String,
+    preferences: set String
+}
+
+sig Company extends User {}
+
+sig University extends User {}
+
+sig InternshipOffer {
+    publishedBy: one Company,
+    title: one String,
+    requiredSkills: set String
+}
+
+// Status as abstract sig with extensions instead of enum
+abstract sig Status {}
+one sig Pending extends Status {}
+one sig Accepted extends Status {}
+one sig Rejected extends Status {}
+
+sig Application {
+    sentBy: one Student,
+    relatedTo: one InternshipOffer,
+    status: one Status
+}
+
+// Fact to ensure each CV is linked to exactly one student
+fact cvLinkedToOneStudent {
+    // Each CV must be linked to exactly one student
+    all c: CV | one s: Student | c = s.cv
+}
+
+// Fact to ensure unique applications per student and offer
+fact uniqueApplications {
+    // A student can only send one application to each offer
+    all s: Student, o: InternshipOffer |
+        lone a: Application | 
+            a.sentBy = s and 
+            a.relatedTo = o
+}
+
+// Simple run command
+run {
+    // Create basic instance
+    some s: Student, o: InternshipOffer | {
+        // Set up student skills
+        s.cv.skills = {"Python"}
+        s.cv.preferences = {"Developer"}
+        
+        // Set up offer details
+        o.title = "Developer"
+        o.requiredSkills = {"Python"}
+        
+        // Create an application
+        one a: Application | {
+            a.sentBy = s
+            a.relatedTo = o
+            a.status = Pending
+        }
+    }
+} for 5 but 
+    exactly 1 Student,
+    exactly 1 CV,
+    exactly 1 Company,
+    exactly 1 InternshipOffer,
+    exactly 1 University,
+    exactly 1 Application
