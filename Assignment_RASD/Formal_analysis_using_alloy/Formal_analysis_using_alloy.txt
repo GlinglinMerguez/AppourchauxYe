@@ -66,33 +66,52 @@ fact validRecommendations {
 }
 
 
+fact recommendationApplicationMutualExclusion {
+    // No recommendation can exist for a student who has already applied
+    all s: Student, o: InternshipOffer | {
+        (some a: Application | a.sentBy = s and a.relatedTo = o) 
+        implies 
+        (no r: Recommendation | r.sentToStudent = s and r.offer = o)
+    }
+    
+    // No application can exist for a student who has received a recommendation
+    all s: Student, o: InternshipOffer | {
+        (some r: Recommendation | r.sentToStudent = s and r.offer = o) 
+        implies 
+        (no a: Application | a.sentBy = s and a.relatedTo = o)
+    }
+}
 
-// Simple run command
-run {
-    // Create basic instance
-    some s: Student, o: InternshipOffer | {
-        // Set up student skills
-        s.cv.skills = {"Python"+"Java"}
-        s.cv.preferences = {"Developer"}
-        
-        // Set up offer details
-        o.title = "Developer"
-        o.requiredSkills = {"C++"+"SQL"}
 
-	// Directly reference the requiredSkills to ensure it's included
-	some r: InternshipOffer | r.requiredSkills = o.requiredSkills
+run twoStudentsScenario {
+    // Make sure we have exactly 2 distinct students
+    some disj s1, s2: Student | {
+        // First student has programming skills
+        s1.cv.skills = {"Python" + "Java"}
+        s1.cv.preferences = {"Developer"}
         
-        // Create an application
-        one a: Application | {
-            a.sentBy = s
-            a.relatedTo = o
-            a.status = Pending
+        // Second student has different skills
+        s2.cv.skills = {"SQL" + "Database"}
+        s2.cv.preferences = {"Developer"}
+        
+        // Set up the offer
+        some o: InternshipOffer | {
+            o.title = "Developer"
+            o.requiredSkills = {"Python" + "Java"}
+            o.publishedBy in Company  // Make sure offer is linked to a company
+            
+            // Ensure recommendation exists for first student
+            some r: Recommendation | {
+                r.sentToStudent = s1
+                r.offer = o
+                r.sentToCompany = o.publishedBy  // Link recommendation to the company that published the offer
+            }
         }
     }
 } for 5 but 
-    exactly 1 Student,
-    exactly 1 CV,
+    exactly 2 Student,
+    exactly 2 CV,
     exactly 1 Company,
     exactly 1 InternshipOffer,
     exactly 1 University,
-    exactly 1 Application
+    exactly 1 Recommendation
