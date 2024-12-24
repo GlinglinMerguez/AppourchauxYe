@@ -5,34 +5,51 @@
 2. A. 1. - Scenarios:
 
 Student uploads/updates a CV:
-The student can upload an already existing CV on the platform, provide information about their education, experiences, skills, etc.
+The student can upload an already existing CV on the platform.
 
 Student browses the offers:
-The student can look at the list of offers and filter by location, time, field, level of education, and by using keywords. They can then apply, which sends a notification to the company.
+The student can look at the list of offers and filter by location, time, field, level of education, and by using keywords. They can then apply by creating an application, which sends a notification to the company.
 
-Student gets a suggestion:
-The student periodically receives suggestions about how to improve their CV and can follow the suggestion step by step.
+Student or Company receives a suggestion:
+The student and the company periodically receives suggestions. For the student it's about how to improve their CV and can follow the suggestion step by step.
+for the company it's about how to make the offers / project descriptions more appealing to students
 
-Student gets a recommendation:
-The student periodically receives internship recommendations that may match their expectations, they can accept it and the platform will send a notification to the corresponding company.
+Student or Company receives a recommendation:
+With all the data at its disposal, the matching algorithm computes best matches and creates recommendation for companies and students.
+When a match is computed by the matching algorithm, a recommendation is sent to both the company and the user in the match.
+The company can accept it and the platform will send a notification to the corresponding student.
+
+User participates to a complaint space:
+The user can submit a complaint or take part to the conversation.
+
+Student takes a questionnaire:
+During the recruiting process, the student may take a questionnaire for a specific offer.
+
+Student or company participates in an interview:
+During the recruiting process, the student and the company can organise and participate to an interview together.
+
+Student monitors recruiting process:
+The student can monitor the current state of the recruiting process.
+
+User provides feedback:
+The user can provide feedback at any time about the platform and the suggestions or recommendations they received.
+The feedback is then sent to the database of the matching algorithm as additional data to perform analysis onto.
 
 Company creates an offer:
 The company can create a new offer and specify all the details about the field, time, location, expected degree. This offer is then available for all students to see and advertised to those that may match.
 
-Company gets a suggestion:
-The company periodically receives suggestions on how to make the offers / project descriptions more appealing to students.
-
-Company gets a recommendation:
-The company periodically receives recommendations about student profiles. They can accept it and the platform will send a notification to the corresponding student.
-
-Company starts recruiting process:
+Company accepts or declines an application:
+When a student applies for a specific offer the company can accept the application if they want to proceed with the recruiting process with this student.
 Once the user and the company both agree to their counterpart's offer, the company can communicate, send testing materials, and interview the student on the platform.
+This starts the recruiting process.
 
-User is unhappy:
-If a student or a company is unhappy about something, they can complain in the dedicated spaces on the platform. A solution can then be found by exchange between the students, the companies and the universities.
+Company collects questionnaire answers:
+Once the user has taken the questionnaire, the company can collect the answers and include them in their decision process.
 
-University monitors situation of internships:
+University monitors the recruiting process:
 The university has access to tools to monitor the status of the internships and to get info. They can interrupt an internship if an issue arises.
+
+
 
 2. A. 2. - Domain class diagram
 
@@ -68,7 +85,7 @@ The platform uses statistical analysis and CV-offer similarity to find probable 
 The platform collects various kinds of information during this process based for example on acceptances and refusals to feed and improve the statistical analysis. Users can also provide feedback which will also be studied by the platform to further improve their recommendation system.
 
 Support for selection process:
-The platform supports the selection by helping manage interviews, questionnaires, tests, etc. The platform also provides the companies with tools to compare how students performed in those tests to finalize the selections.
+The platform supports the selection by helping manage interviews, questionnaires, etc. The platform also provides the companies with tools to compare how students performed in those tests to finalize the selections.
 
 Monitoring:
 The platform provides spaces for communication, complaints, internship status monitoring, and matchmaking process monitoring to students, universities and companies.

@@ -74,26 +74,25 @@ Recruitement Process Management
 [R13] The system provides tools for companies to evaluate, score and rank candidates based on test results, interview feedback and overall suitability
 [R14] The system notifies students of updates related to their recruitment status (e.g., rejected, hired, shortlisted)
 
-Feedback and Suggestions 
-[R15] The system allows students to provide feedback on their application and recruitment experiences
-[R16] The system allows companies to provide feedback on candidates they evaluated and recruitment experiences
-[R17] The system collects feedback from students and companies, analyzes it and generates actionable suggestions for both parties
-[R18] The system sends personalized suggestions to students to improve their CVs, profiles, cover letters or applications
-[R19] The system sends personalized suggestions to companies to improve their internship offers or recruitment strategies
+Suggestions 
+[R15] The system analyzes student CVs and internship offers to generates actionable suggestions for both student and company
+[R16] The system sends personalized suggestions to students to improve their CVs, profiles, cover letters or applications
+[R17] The system sends personalized suggestions to companies to improve their internship offers or recruitment strategies
 
 Matching and Recommendations
-[R20] The system uses a matching algorithm to analyze student CVs, internship offers and user preferences to generate recommendations
-[R21] The system sends internship recommendations to students based on their skills, preferences and qualifications
-[R22] The system sends candidate recommendations to companies based on the requirements of their internship offers
+[R18] The system allows students to provide feedback on their application and recruitment experiences
+[R19] The system allows companies to provide feedback on candidates they evaluated and recruitment experiences
+[R20] The system uses a matching algorithm to analyze student CVs, internship offers and user feedback to generate recommendations
+[R21] The system sends recommendations to both students and companies when a match found
 
 Complaints and Monitoring
-[R23] The system allows students and companies to submit complaints about any issues related to the internship or recruitment process
-[R24] The system allows universities to monitor and resolve complaints submitted by students or companies
-[R25] The system notifies universities of unresolved issues or complaints requiring attention
+[R22] The system allows students and companies to submit complaints about any issues related to the internship or recruitment process
+[R23] The system allows universities to monitor and resolve complaints submitted by students or companies
+[R24] The system notifies universities of unresolved issues or complaints requiring attention
 
 Notifications and Real-time Updates
-[R26] The system notifies students of application deadlines, interview schedules, test results and application status updates in real time
-[R27] The system notifies companies of updates on candidate applications and recruitment stages
+[R25] The system notifies students of application deadlines, interview schedules, test results and application status updates in real time
+[R26] The system notifies companies of updates on candidate applications and recruitment stages
 
 3.2.1
 TO DO : Use cases diagram
@@ -101,7 +100,7 @@ TO DO : Use cases diagram
 3.2.2 Use Cases
 [UC1] User registration 
 • Name: User Registration
-• Actors: Student, Company, University
+• Actors: User (Student, Company, University)
 • Entry Condition: The user has accessed the registration page of the platform
 • Event Flow:
 - The user clicks the “Register” button
@@ -115,7 +114,7 @@ TO DO : Use cases diagram
 
 [UC2] User Login
 • Name: User login
-• Actors: Student, Company, University
+• Actors: User (Student, Company, University)
 • Entry Condition: The user has accessed the registration page of the platform
 • Event Flow:
 - The user enters their email and password
@@ -193,7 +192,7 @@ TO DO : Use cases diagram
 [UC8] Apply for Internship Offer
 • Name: Apply for Internship Offer
 • Actors: Student
-• Entry Condition: The student is logged in, has uploaded a CV, and is viewing an internship offer
+• Entry Condition: The student is logged in, has uploaded a CV and is viewing an internship offer
 • Event Flow:
 - The student selects an internship offer to apply for
 - The system displays a prompt to attach a CV or optional documents (e.g., cover letters)
@@ -204,50 +203,37 @@ TO DO : Use cases diagram
 • Exit Condition: The application is successfully submitted to the company
 • Exception: If no CV is attached or the file format is invalid, the system notifies the student to correct the issue
 
-[UC9] Initiate Recruitment Process
-• Name: Initiate Recruitment Process
+[UC9] Initiate Interviews
+• Name: Initiate Interviews
 • Actors: Company
-• Entry Condition: The company is logged in and has received applications for an internship offer
+• Entry Condition: The company has received applications for offers
 • Event Flow:
-- The company selects an internship offer with pending applications
-- The system displays a list of received applications
-- The company clicks the “Initiate Recruitment Process” button
-- The system prompts the company to configure the recruitment process (e.g., tests, interviews)
-- The company finalizes the configuration and starts the process
-- The system notifies the selected candidates about the recruitment process
-• Exit Condition: The recruitment process is successfully initiated
-• Exception: If no candidates are selected, the system notifies the company to choose applicants
+- The company logs into the platform
+- The company selects an internship offer
+- The system displays a list of received applications for that offer
+- The company selects a candidate from the list and click on "Add Interview"
+- The system prompts the company to configure interview slots by selecting multiple possible dates, times, and formats (e.g., online or in-person)
+- The company confirms the configuration
+- The system notifies the selected candidate about the interview slots
+• Exit condition: The interview schedule is successfully configured and the candidate is notified
 
-
-[UC10] Schedule Interviews
-• Name: Schedule Interviews
-• Actors: Company, Students
-• Entry Condition: The recruitment process has been initiated and candidates have been shortlisted
-• Event Flow:
-- The company selects a candidate from the recruitment process
-- The system displays a scheduling interface for interviews
-- The company sets mutiples possible interview dates, time, and format (e.g., online or in-person)
-- The system notifies the candidate about the scheduled interview
-- The student chooses the slot he wants
-- The system notifies the company and the interview slot is fixed on both student and company's calendar
-• Exit Condition: The interview is successfully scheduled and saved in the system
-• Exception: If scheduling conflicts occur, the system prompts the company to choose a different time
-
-[UC11] Assign Tests
+[UC10] Assign Tests
 • Name: Assign Tests
-• Actors: Company, Students
-• Entry Condition: The recruitment process has been initiated and the company has chosen to include tests
-- The company selects a candidate or a group of candidates
-- The system displays a list of available tests or allows the company to create a new test
-- The company assigns the test(s) to the selected candidates
-- The system notifies the candidates and provides a link to access the test
+• Actors: Company
+• Entry Condition: The company has received applications for offers
+- The company logs into the platform
+- The company selects an internship offer
+- The system displays a list of received applications for that offer
+- The company selects a candidate from the list and click on "Add Test"
+- The system prompts the company to assign a test by selecting it from a list of available tests or creating a new test
+- The company confirms the configuration
+- The system notifies the candidate about the assigned test, providing a link for access
 • Exit Condition: The test is successfully assigned to the candidates
-• Exception: If the test is incomplete or missing details, the system prompts the company to finalize it before assigning
 
-[UC12] Evaluate and Score Candidates
+[UC11] Evaluate and Score Candidates
 • Name: Evaluate and Score Candidates
 • Actors: Company
-• Entry Condition: Tests have been completed, or interviews have been conducted as part of the recruitment process
+• Entry Condition: Company is logged in and tests have been completed or interviews have been conducted
 • Event Flow:
 - The system provides the company with access to test results and interview feedback
 - The company evaluates candidates based on the provided data
@@ -256,51 +242,48 @@ TO DO : Use cases diagram
 • Exit Condition: The evaluation is saved and candidates are ranked accordingly
 • Exception: If scores are not entered, the system flags the evaluation as incomplete
 
-[UC13] Provide Feedback
+[UC12] Provide Feedback
 • Name: Provide Feedback
-• Actors: Company,Student
+• Actors: User (Company,Student)
 • Entry Condition: The recruitment process has been completed
 • Event Flow:
 - The system prompts students and companies to provide feedback
 - The user fills in a feedback form with ratings and comments
 - The system validates and saves the feedback
 • Exit Condition: The feedback is successfully recorded in the system
-• Exception: If submission fails due to network issues, the system retries or notifies the user
 
-[UC14] Generate Suggestions
+[UC13] Generate Suggestions
 • Name: Generate Suggestions
-• Actors: System
-• Entry Condition: Feedback has been submitted by students and companies
-- The system collects feedback and analyzes it
+• Actors: System (Analysis tool), User (Company, Student)
+• Entry Condition: Students have uploaded their CVs and companies have published their offers
+- The system analyzes student CVs and internship offers
 - The system identifies areas for improvement (e.g., CV content, job descriptions)
 - The system generates personalized suggestions for students and companies
 • Exit Condition: Suggestions are generated and stored
-• Exception: If feedback data is incomplete, the system generates partial suggestions
 
-[UC15] Receive Suggestions
+[UC14] Receive Suggestions
 • Name: Receive Suggestions
-• Actors: Company, Student
+• Actors: User (Company, Student)
 • Entry Condition: Suggestions have been generated by the system
 - The system notifies the user about the availability of suggestions
 - The user views the suggestions on their dashboard
 - The user accepts or ignores the suggestions
 • Exit Condition: The user has received and reviewed the suggestions
-• Exception: If suggestions fail to load, the system retries or notifies the user
 
-[UC16] Generate Recommendations
+[UC15] Generate Recommendations
 • Name: Generate Recommendations
-• Actors: System (Matching algorithm)
-• Entry Condition: The system has access to CVs, offers and user preferences
-- The system analyzes CVs, offers, preferences and previous interview experiences using the matching algorithm
-- The system generates personalized recommendations for students and companies
+• Actors: System (Matching algorithm), User (Company, Student)
+• Entry Condition: The system has access to CVs, offers and user feedback
+- The system analyzes CVs, offers, preferences and previous recruitment feedback
+- The system generates personalized recommendations for students and companies using the matching algorithm
 - The recommendations are saved in the system
 • Exit Condition: Recommendations are successfully generated
-• Exception: If data is incomplete, the system generates fewer or no recommendations
 
-[UC17] Receive Recommendations
+[UC16] Receive Recommendations
 • Name: Receive Recommendations
-• Actors: Company, Student
+• Actors: User (Company, Student)
 • Entry Condition: Recommendations have been generated and sent to the respective users
+• Event flow:
 - The system notifies the user about the availability of recommendations
 - The user views the recommendations on their dashboard
 - The user accepts or declines the recommendations
@@ -308,40 +291,98 @@ TO DO : Use cases diagram
     2) If rejected, the system updates the status to "declined."
 - When both parties (student and company) accept a recommendation, the system establishes a "Contact" between the student and company, and triggers the recruitment process
 • Exit Condition: The user has received and reviewed the recommendations
-• Exception: If recommendations fail to load, the system retries or notifies the user
 
-[UC18] Submit Complaint
+[UC17] Submit Complaint
 • Name: Submit Complaint
-• Actors: Company, Student
-• Entry Condition: The user has an issue related to the internship or recruitment process
+• Actors: User (Company, Student)
+• Entry Condition: The user has an issue related to the internship or recruitment process and the user is logged in
 - The user navigates to the complaints section
 - The user fills in a complaint form, providing details of the issue
 - The system saves the complaint and notifies the university
 • Exit Condition: The complaint is successfully submitted
-• Exception: If submission fails due to network issues, the system retries or notifies the user
 
-[UC19]  Monitor and Resolve Complaint
+[UC18]  Monitor and Resolve Complaint
 • Name:  Monitor and Resolve Complaint
 • Actors: University
-• Entry Condition: A complaint has been submitted by a student or company
-- The university reviews the complaint in the system
+• Entry Condition: A complaint has been submitted by a student or company, and the university is logged in
+- The university accesses the complaint management section
+- The system displays the list of pending complaints
+- The university selects a specific complaint
 - The system displays all relevant details about the complaint
-- The university takes appropriate action (e.g., contact parties, resolve issues)
-- The system updates the status of the complaint
-- The system notifies the complainant of the resolution
-• Exit Condition: The complaint is resolved and closed
-• Exception: If additional details are required, the system prompts the complainant for clarification
+- The university reviews the complaint details and severity
+- The university creates appropriate communication channels with involved parties
+- The university documents the actions taken and resolution
+- The system updates the complaint status
+- The system notifies involved parties about the resolution
+• Exit Condition: A resolution is proposed 
+• Exception : If the complaint needs further investigation, the university can keep the status as "in progress" and continue the resolution process
+
+[UC19]  Interview scheduling
+• Name:  Interview scheduling
+• Actors: Student
+• Entry Condition: The student has received a notification about the interview invitation
+- The system notifies the student about the interview process and available slots
+- The student logs into the system and navigates to the interview scheduling section
+- The system displays the available interview slots
+- The student selects a preferred interview slot from the list
+- The system confirms the slot and updates the interview schedule for both the student and the company
+- If no preferred slot is available, the student clicks on the “Indicate Availability” button
+- The system prompts the student to specify their available dates and times
+- The system sends this information to the company for further action
+• Exit Condition: 
+- The slot is scheduled
+- The student’s availability has been communicated to the company for further scheduling
+• Exception: If the student does not respond to the notification or skips the steps, they are marked as “not participating.”
+
+[UC20]  Test taking
+• Name:  Interview taking
+• Actors: Student
+• Entry Condition: The student has been notified about the recruitment process and is eligible to take a recruitment test
+- The system notifies the student about the recruitment test and provides a link to access it
+- The student logs into the system and selects the recruitment test link
+- The system presents the test interface (e.g., coding problems, multiple-choice questions) 
+- The student completes the test within the provided time frame
+- The student submits the test
+- The system validates the submission, records the results and updates the recruitment progress 
+• Exit Condition: The student has successfully submitted the test
 
 
 
+3.3 Performance Requirements
 
+The platform must deliver good performance to accommodate a substantial user base comprising both educators and students.
+To enhance user satisfaction and meet performance targets, the system must maintain swift response times not exceeding one second.
+It's important to note that user experience may be impacted by slow internet connectivity, potentially resulting in increased response times.
 
+3.4. Design Constraints
+3.4.1. Standards compliance
+The platform prioritizes user privacy by strictly adhering to the General Data Protection Regulation (GDPR), which governs data protection and privacy rights for individuals within the European Union (EU) and European Economic Area (EEA). Additionally, the system implements international date and time formats to maintain compliance with current standards.
 
+3.4.2. Hardware limitations
+The following hardware specifications outline the minimum requirements for optimal platform usage:
+• Network Connectivity: Users must have access to reliable internet service. Compatible network standards include 3G, 4G, 5G, IEEE 802.11, and IEEE 802.3. Connection must be established through appropriate network infrastructure such as modems, access points, or similar devices;
+• Device Specifications: Users require devices equipped with standard processing capabilities (equivalent to Intel i3 or i5), HD-quality display resolution or better, and minimum 4GB RAM capacity.
 
+3.4.3. Any other constraint
+Given the platform's extensive feature set and expected prolonged user engagement, the interface must emphasize user-friendliness and intuitive navigation.
 
+3.5. Software System Attributes
+The following section details essential software attributes required by the system.
 
+3.5.1. Reliability
+Long-term continuous operation necessitates robust system reliability. This is achieved through implementation of data replication and consistency mechanisms to prevent system failures. Additionally, regular offline backup procedures are essential for data recovery purposes.
 
+3.5.2. Availability
+System availability is paramount, with a target uptime of 99%. To achieve this, the platform implements comprehensive replication strategies and eliminates single points of failure. The system is specially engineered to handle peak loads during submission deadlines.
 
+3.5.3. Security
+Given the sensitive nature of stored personal data, security is critically important. The system implements encrypted password storage in the central database, comprehensive data protection measures against internal and external threats, and ensures data integrity, consistency, and confidentiality through robust cyber-security policies. Special attention is given to secure execution of student code during dynamic analysis to prevent malicious code execution.
+
+3.5.4. Maintainability
+The system emphasizes maintainability through comprehensive code documentation. Testing protocols must achieve minimum 75% code coverage, excluding UI components.
+
+3.5.5. Portability
+As a web-based application, the platform ensures cross-browser compatibility (Firefox, Google Chrome, etc.) and device responsiveness (smartphones, computers, and other devices).
 
 
 

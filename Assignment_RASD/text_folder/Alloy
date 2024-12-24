@@ -1,0 +1,146 @@
+// Abstract signatures for users
+abstract sig User {}
+
+// User types
+sig Student extends User {
+    cv: one CV,         // Each student has a CV
+    from: one University, // Each student belongs to a university
+    sent: set Application, // Set of applications sent by the student
+    studentRecommendations: set Recommendation // Recommendations for the student
+}
+
+sig CV {
+    skills: set String,
+    preferredJobs: set String // Preferred job titles
+}
+
+sig Company extends User {
+    offers: set InternshipOffer, // Set of internship offers by the company
+    companyRecommendations: set Recommendation // Recommendations for the company
+}
+
+sig University extends User {
+    students: set Student, // University has multiple students
+    complaints: set Complaint // University handles complaints
+}
+
+sig InternshipOffer {
+    publishedBy: one Company, // Internship offer is published by one company
+    jobtitle: one String, // Job title for the offer
+    requiredSkills: set String // Required skills for the offer
+}
+
+// Application statuses
+sig AStatus {}
+one sig Ongoing extends AStatus {}
+one sig Rejected extends AStatus {}
+one sig Accepted extends AStatus {}
+
+sig Application {
+    student: one Student,
+    offer: one InternshipOffer,
+    applicationStatus: one AStatus, // Status of the application (ongoing, rejected, accepted)
+    RecruitmentProcess: set Process // Processes related to recruitment (test, interview)
+}
+
+// Recruitment processes
+sig Process {}
+sig Test extends Process {}
+sig Interview extends Process {}
+
+// Recommendation signature
+sig Recommendation {
+    student: one Student,
+    offer: one InternshipOffer
+}
+
+// Complaints signature (we may remove this entirely if not needed)
+sig Complaint {
+    submitter: one User, // Can be either a student or a company
+    relatedOffer: one InternshipOffer // The offer related to the complaint
+}
+
+// Matching score function (used in recommendation process)
+fun matchingScore(s: Student, o: InternshipOffer): Int {
+    # (s.cv.skills & o.requiredSkills) // Count how many skills match between the student's CV and the offer's required skills
+}
+
+// Fact to create recommendations
+fact recommendationProcess {
+    all s: Student, o: InternshipOffer |
+        (#(s.cv.skills & o.requiredSkills) >= 2 and
+         some (s.cv.preferredJobs & o.jobtitle)) implies {
+            one r: Recommendation {
+                r.student = s and
+                r.offer = o and
+                r in s.studentRecommendations and
+                r in o.publishedBy.companyRecommendations
+            }
+        }
+}
+
+// Fact to ensure a student can only apply to an offer once
+fact uniqueApplications {
+    all s: Student, o: InternshipOffer |
+        lone a: Application | a.student = s and a.offer = o
+}
+
+// Fact to ensure that a recruitment process is only added if the application status is "Ongoing"
+fact initiateRecruitment {
+    all a: Application |
+        a.applicationStatus = Ongoing implies {
+            some rp: Process |
+                rp in a.RecruitmentProcess
+        }
+}
+
+// Facts
+fact universityFacts {
+    // Each student belongs to exactly one university
+    all s: Student | one u: University | s.from = u and s in u.students
+    // Each offer belongs to exactly one company
+    all o: InternshipOffer | one c: Company | o.publishedBy = c and o in c.offers
+}
+
+fact applicationStatus {
+    // Applications can only exist for active offers (no offer status needed)
+    all a: Application | a.offer in InternshipOffer
+}
+
+// Ensure each CV is linked to exactly one student
+fact cvLinkedToOneStudent {
+    all cuvitae: CV | one s: Student | cuvitae in s.cv
+}
+
+// Fact to ensure that a recommendation can only exist once between a student and a company for a given offer
+fact uniqueRecommendation {
+    all s: Student, c: Company, o: InternshipOffer |
+        lone r: Recommendation | 
+            r.student = s and r.offer = o and r in s.studentRecommendations and r in c.companyRecommendations
+}
+
+// Run command to simulate the scenario where a student applies to offers, 
+// companies send recommendations, and recruitment process is triggered.
+run {
+    // Create a student who applies to offers from 1 company
+    some s: Student, c: Company, u: University |
+        // Basic setup
+        s.from = u and
+        s in u.students and
+        s.cv.skills = {"Java"+ "Python"} and
+        s.cv.preferredJobs = {"Software Engineer"+ "Data Scientist"} and
+        
+        // Create internship offer and link it to the company
+        some o: InternshipOffer |
+            o.publishedBy = c and
+            o.requiredSkills = {"Java"+ "Python"} and
+            o.jobtitle = "Software Engineer" and
+            
+            // Link the offer to the student's application
+            some a: Application |
+                a.student = s and a.offer = o and a.applicationStatus = Ongoing
+                
+        // Restrict the creation of Complaints
+        no Complaint
+} for 2 but exactly 1 Student, exactly 1 Company, exactly 1 InternshipOffer, exactly 1 University
+
