@@ -34,16 +34,16 @@ The following are the revision steps made by the team during the RASD developmen
  development, as previously explained in the RASD;
 2) Architectural Design: : This part of the document describes at different levels
  of granularity how the architecture is designed;
- User Interface Design: This section shows the wire frame that constitutes the
+3) User Interface Design: This section shows the wire frame that constitutes the
  platform UI;
-3) Requirements Traceability: in this section it is explained how the goals defined
+4) Requirements Traceability: in this section it is explained how the goals defined
  in the previous document are satisfied by the interaction between the requirements
  and the component described in this document.
-4) Implementation, Integration and Test Plan: this section provides a descrip
+5) Implementation, Integration and Test Plan: this section provides a descrip
 tion of the implementation integration and testing details, useful for the developers
  and producer of the platform;
-5) Effort Spent: shows the effort spent to write this document
-6) Bibliography: it contains the references to any documents and software used to
+6) Effort Spent: shows the effort spent to write this document
+7) Bibliography: it contains the references to any documents and software used to
  write this paper.
 
 
