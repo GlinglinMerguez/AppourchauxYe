@@ -1,0 +1,23 @@
+2.1 Overview
+
+The S&C platform implementation will leverage a three-tier architecture.  This architectural pattern creates a clear separation of concerns by organizing the application into three distinct and independent layers:
+The Presentation layer (Front-end) which is the user interface, the application layer (Middle-tier) which is the processing part, and the Data layer (Back-end) which is the information storage and retrieval.
+This architectural choice offers several strategic advantages. Beyond the commonly cited benefit of independent development and scaling, it provides enhanced security through layer isolation, preventing direct access to the data tier from the presentation layer.
+The modular nature of this architecture also facilitates maintenance and troubleshooting, as issues can be isolated to specific tiers.
+This also enables technological flexibility, each tier can utilize different technologies best suited to its specific requirements, like different programmation languages.
+
+INSERT IMAGE
+
+2.1.1 Distributed view
+
+INSERT IMAGE
+
+The arrows represent possible comunication paths.
+
+2.2 Component view
+
+INSERT IMAGE
+
+2.3 Deployment view
+
+2.4 Runtime view
