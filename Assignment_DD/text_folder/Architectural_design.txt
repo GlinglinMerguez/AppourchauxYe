@@ -24,9 +24,9 @@ The main components of the backend are:
  - OfferManager: provides the functionalities related to the management of company offers
  - MatchingAlgorithm: takes CVs, offers and feedback to compute potential matches to companies and students, then sends reccomendations to users in the form of a notification
  - ComplaintManager: provides the functionalities related to the management of user complaints and discusions
- - SuggestionManager: periodicaly sends suggestion on how to improve CVs and Offers to Student and Users
+ - SuggestionManager: periodicaly sends suggestions on how to improve CVs and Offers to Student and Users
  - RecruitingManager: encompasses all of the recruiting process, including interviews, questionnaires, and gathering of answers.
- - MonitoringManager: allows the monitoring of the recruiting process to users 
+ - MonitoringManager: allows the monitoring of the recruiting process by the users 
  - Database: stores all the data of the app
  - API: This allows the backend to be called by the frontend, and routes the queries to the appropriate internal components.
 
