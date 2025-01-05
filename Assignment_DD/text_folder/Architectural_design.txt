@@ -1,7 +1,7 @@
 2.1 Overview
 
 The S&C platform implementation will leverage a three-tier architecture.  This architectural pattern creates a clear separation of concerns by organizing the application into three distinct and independent layers:
-The Presentation layer (Front-end) which is the user interface, the application layer (Middle-tier) which is the processing part, and the Data layer (Back-end) which is the information storage and retrieval.
+The Presentation layer (Front-end) which is the user interface, the application layer (Back-end) which is the processing part, and the Data layer which is the information storage and retrieval.
 This architectural choice offers several strategic advantages. Beyond the commonly cited benefit of independent development and scaling, it provides enhanced security through layer isolation, preventing direct access to the data tier from the presentation layer.
 The modular nature of this architecture also facilitates maintenance and troubleshooting, as issues can be isolated to specific tiers.
 This also enables technological flexibility, each tier can utilize different technologies best suited to its specific requirements, like different programmation languages.
@@ -15,6 +15,23 @@ INSERT IMAGE
 The arrows represent possible comunication paths.
 
 2.2 Component view
+
+For the three tier architecture that we will use, the backend will contain an API which will allow the web app to communicate and query the back-end. The backend will also interact with the data layer for storage and retrieval.
+The main components of the backend are:
+ - AuthenticationManager: provides the functionalities related to the authentication of the user on the platform
+ - CVManager: provides the functionalities related to the management of student CVs
+ - ApplicationManager: provides the functionalities related to the management of student applications
+ - OfferManager: provides the functionalities related to the management of company offers
+ - MatchingAlgorithm: takes CVs, offers and feedback to compute potential matches to companies and students, then sends reccomendations to users in the form of a notification
+ - ComplaintManager: provides the functionalities related to the management of user complaints and discusions
+ - SuggestionManager: periodicaly sends suggestion on how to improve CVs and Offers to Student and Users
+ - RecruitingManager: encompasses all of the recruiting process, including interviews, questionnaires, and gathering of answers.
+ - MonitoringManager: allows the monitoring of the recruiting process to users 
+ - Database: stores all the data of the app
+ - API: This allows the backend to be called by the frontend, and routes the queries to the appropriate internal components.
+
+ The main component of the frontend is:
+ - WebApp: this is the interface between the app and the user. It contains not only the graphics but also the logic needed to interact efficiently with the API of the backend
 
 INSERT IMAGE
 
