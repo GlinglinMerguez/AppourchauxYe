@@ -37,4 +37,12 @@ INSERT IMAGE
 
 2.3 Deployment view
 
+Here is the deployement showing the topological distribution of the S&C platform.
+
+INSERT IMAGE
+
+The operating system (OS) runs on the computer, the Browser runs inside of the OS, and the S&C client runs inside of the browse.
+When a request is sent to the backend, it goes through a firewall to filter out eventual malicious requests. The request then goes through a load balancer which redirect trafic to prevent overload.
+The application server (backend) communicates with the database via TCP/IP.
+
 2.4 Runtime view
