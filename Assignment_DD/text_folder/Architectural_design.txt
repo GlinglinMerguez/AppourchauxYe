@@ -46,3 +46,30 @@ When a request is sent to the backend, it goes through a firewall to filter out 
 The application server (backend) communicates with the database via TCP/IP.
 
 2.4 Runtime view
+
+2.6. Selected architectural styles and patterns
+
+2.6.1. 3-tier Architecture
+
+The S&C platform implements a three-tiered architectural style, selected for its robust separation of concerns through three distinct layers:
+ - The web server: this is the presentation tier and provides the user interface. This is usually a web page or a web site. The content can be static or dynamic, and uses technologies such as HTML, CSS and Javascript.
+ - The application server: this is the middle tier, implementing core business logic and processing.
+ - The database server: this is the backend tier of a web application. It runs on DBMS, typically MySQL.
+
+2.6.2. Model-View-Controller (MVC) Pattern
+For the S&C platform, the MVC pattern provides an optimal structure for web application development through clear separation of responsibilities:
+
+The Model manages application data and business rules, ensuring data integrity and handling business operations. The View transforms data into user-friendly interfaces, allowing multiple representations of the same information depending on user needs. The Controller orchestrates the interaction between users and the system, processing inputs and coordinating responses between Model and View components. This separation enhances maintainability and facilitates independent development of components.
+
+2.6.3. Facade Pattern
+To streamline request handling, the platform employs the Facade pattern, which provides a simplified interface to the complex underlying system. This architectural choice offers several advantages: it reduces system complexity from the client's perspective, improves API usability, and facilitates future system modifications by decoupling components. The pattern serves as an excellent foundation for evolving the system toward a more modular architecture.
+
+2.7. Additional Design Considerations
+
+The platform's architecture incorporates several key design decisions to ensure optimal performance and reliability:
+
+For availability, the system implements load balancing mechanisms to distribute traffic efficiently and maintain high availability. Database replication strategies are employed to eliminate single points of failure and ensure continuous service.
+
+Regarding data management, the system utilizes a sophisticated database structure for storing user information, complemented by optimized data structures to enhance query performance and response times.
+
+Security is maintained through a comprehensive firewall system that filters and protects against various cyber threats, forming a crucial component of the platform's defense strategy.
